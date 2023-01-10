@@ -23,3 +23,19 @@ export const patchVotesDec = (reviewId) => {
     .patch(`/reviews/${reviewId}`, decrementVote)
     .then(({ data }) => {});
 };
+
+export const getCommentsByID = (reviewId) => {
+  return gamersAPI.get(`/reviews/${reviewId}/comments`).then((response) => {
+    return response.data.comments;
+  });
+};
+
+export const postComment = (reviewId, username, newComment) => {
+  const postBody = { username: username, body: newComment };
+
+  return gamersAPI
+    .post(`/reviews/${reviewId}/comments`, postBody)
+    .then(({ data }) => {
+      return data;
+    });
+};
