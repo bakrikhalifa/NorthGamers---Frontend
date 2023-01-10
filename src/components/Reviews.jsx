@@ -1,18 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
+import { getReviews } from "../utils/API";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`https://bakrisncgames.onrender.com/api/reviews`)
-      .then((response) => {
-        setReviews(response.data.reviews);
-        setIsLoading(false);
-      });
+    getReviews().then((response) => {
+      setReviews(response.reviews);
+      setIsLoading(false);
+    });
   }, []);
 
   if (isLoading) {
