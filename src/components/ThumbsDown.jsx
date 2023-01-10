@@ -1,8 +1,5 @@
 const ThumbsDown = () => {
+  return <button>Thumbs Down</button>;
+};
 
-    return (
-        <button>Thumbs Down</button>
-    )
-}
-
-export default ThumbsDown
+export default ThumbsDown;
