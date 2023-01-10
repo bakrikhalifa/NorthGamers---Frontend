@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import { Routes, Route } from "react-router-dom";
 import Reviews from './components/Reviews';
 import IndividualReview from './components/IndividualReviewCard';
+import ReviewComments from './components/ReviewComments';
 
 function App() {
   const LoggedInUser = "BakriKhalifa"
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<WelcomeParagraph LoggedInUser={LoggedInUser}/>}/>
         <Route path='/reviews' element={<Reviews/>}/>
         <Route path='/reviews/:review_id' element={<IndividualReview/>}/>
+        <Route path='/reviews/:review_id/comments' element={<ReviewComments/>}/>
         <Route path='/users'/>
         <Route path='/categories'/>
 

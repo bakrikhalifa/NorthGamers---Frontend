@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import ThumbsUp from "./ThumbsUp";
 import ThumbsDown from "./ThumbsDown";
@@ -25,7 +25,7 @@ const IndividualReview = () => {
   return (
     <div>
       <ul>
-        <li key={singleReview.review_id} className="reviewCard">
+        <li key={singleReview.review_id} className="IndReviewCard">
           <img
             src={singleReview.review_img_url}
             className="review_image"
@@ -38,7 +38,10 @@ const IndividualReview = () => {
           <p>Designer: {singleReview.designer}</p>
           <p>Owner: {singleReview.owner}</p>
           <p>Review: {singleReview.review_body}</p>
-          <div>
+          <Link to={`/reviews/${singleReview.review_id}/comments`}>
+            <button className="comments">View All Comments</button>
+          </Link>
+          <div className="votes-container">
             <ThumbsUp />
             <strong className="votes">Votes: {singleReview.votes}</strong>
             <ThumbsDown />
@@ -46,7 +49,6 @@ const IndividualReview = () => {
         </li>
       </ul>
     </div>
-    
   );
 };
 
