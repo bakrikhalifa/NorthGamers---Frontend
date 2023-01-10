@@ -9,7 +9,9 @@ const ReviewComments = () => {
 
   useEffect(() => {
     axios
-      .get(`https://bakrisncgames.onrender.com/api/reviews/${review_id}/comments`)
+      .get(
+        `https://bakrisncgames.onrender.com/api/reviews/${review_id}/comments`
+      )
       .then((response) => {
         setComments(response.data.comments);
         setLoading(false);
@@ -22,8 +24,8 @@ const ReviewComments = () => {
     return <p>Loading...</p>;
   }
 
-  if(!comments.length) {
-    return <p>No comments available for this review.</p>
+  if (!comments.length) {
+    return <p>No comments available for this review.</p>;
   }
 
   return (
@@ -34,16 +36,14 @@ const ReviewComments = () => {
           <p>Date added: {comment.created_at}</p>
           <p>Comment: {comment.body}</p>
           <div className="reviewVotes-container">
-          <button>Thumbs Up</button>
-            <strong >Votes: {comment.votes}</strong>
+            <button>Thumbs Up</button>
+            <strong>Votes: {comment.votes}</strong>
             <button>Thumbs Down</button>
           </div>
         </li>
       ))}
     </ul>
-  )
-
-  
+  );
 };
 
 export default ReviewComments;
