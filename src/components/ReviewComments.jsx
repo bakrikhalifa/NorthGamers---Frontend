@@ -47,9 +47,9 @@ const ReviewComments = ({ LoggedInUser: username }) => {
             <p>Date added: {comment.created_at}</p>
             <p>Comment: {comment.body}</p>
             <div className="reviewVotes-container">
-              <button>Thumbs Up</button>
+              <button className="commentUpButton">Thumbs Up</button>
               <strong>Votes: {comment.votes}</strong>
-              <button>Thumbs Down</button>
+              <button className="commentDownButton">Thumbs Down</button>
             </div>
           </li>
         ))}

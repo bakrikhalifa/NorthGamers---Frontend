@@ -172,3 +172,11 @@ a {
  .thumbsDown{
   margin-left: 0.5rem
  }
+
+ .commentUpButton {
+  margin-right: 0.5rem
+ }
+
+ .commentDownButton {
+  margin-left: 0.5rem
+ }
