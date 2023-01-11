@@ -5,7 +5,7 @@ import WelcomeParagraph from './components/WelcomeParagraph';
 import Nav from './components/Nav';
 import { Routes, Route } from "react-router-dom";
 import Reviews from './components/Reviews';
-import IndividualReview from './components/IndividualReviewCard';
+import IndividualReview from './components/IndividualReview';
 import ReviewComments from './components/ReviewComments';
 
 function App() {
