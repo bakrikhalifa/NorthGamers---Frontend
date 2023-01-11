@@ -9,28 +9,31 @@ const AddComment = ({ username, comments, setComments }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    postComment(review_id, "weegembump", newComment)
+    postComment(review_id, username, newComment)
       .then((addedComment) => {
         setComments((currComments) => {
           return [addedComment, ...currComments];
         });
         setnewComment("");
-        alert("comment added succesfully!");
+        alert("Comment added succesfully!");
       })
       .catch((err) => {
-        alert("You must sign in to comment!");
+        alert("Request failed!");
       });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="newComment">Add a comment: </label>
+    <form className="comment" onSubmit={handleSubmit}>
+      <label htmlFor="newComment" className="commentLabel">
+        Add a comment:{" "}
+      </label>
       <textarea
-        id="newComment"
+        className="CommentAdder"
         value={newComment}
         onChange={(e) => setnewComment(e.target.value)}
+        required
       ></textarea>
-      <button>Add</button>
+      <button className="commentButton">Add</button>
     </form>
   );
 };

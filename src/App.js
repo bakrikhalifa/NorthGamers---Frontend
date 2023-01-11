@@ -9,7 +9,7 @@ import IndividualReview from "./components/IndividualReview";
 import ReviewComments from "./components/ReviewComments";
 
 function App() {
-  const LoggedInUser = "BakriKhalifa";
+  const LoggedInUser = "weegembump";
   return (
     <div className="App">
       <Header />

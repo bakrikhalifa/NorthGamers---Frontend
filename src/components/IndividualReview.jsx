@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import ThumbsUp from "./ThumbsUp";
-import ThumbsDown from "./ThumbsDown";
+import Thumbs from "./Thumbs";
 
 const IndividualReview = () => {
   const { review_id } = useParams();
@@ -46,9 +45,17 @@ const IndividualReview = () => {
           <button className="viewCommentsButton">View All Comments</button>
         </Link>
         <div className="votingSection">
-          <ThumbsUp setSingleReview={setSingleReview} singleReview={singleReview} review_id={review_id}/>
+          <Thumbs
+            setSingleReview={setSingleReview}
+            review_id={review_id}
+            isThumbsUp={true}
+          />
           <strong className="votes">Votes: {singleReview.votes}</strong>
-          <ThumbsDown setSingleReview={setSingleReview} singleReview={singleReview} review_id={review_id}/>
+          <Thumbs
+            setSingleReview={setSingleReview}
+            review_id={review_id}
+            isThumbsUp={false}
+          />
         </div>
       </footer>
     </section>

@@ -10,18 +10,9 @@ export const getReviews = () => {
   });
 };
 
-export const patchVotesInc = (reviewId) => {
-  const incrementVote = { inc_votes: 1 };
-  return gamersAPI
-    .patch(`/reviews/${reviewId}`, incrementVote)
-    .then(({ data }) => {});
-};
-
-export const patchVotesDec = (reviewId) => {
-  const decrementVote = { inc_votes: -1 };
-  return gamersAPI
-    .patch(`/reviews/${reviewId}`, decrementVote)
-    .then(({ data }) => {});
+export const patchVotes = (reviewId, increment) => {
+  const voteChange = { inc_votes: increment ? 1 : -1 };
+  return gamersAPI.patch(`/reviews/${reviewId}`, voteChange);
 };
 
 export const getCommentsByID = (reviewId) => {
