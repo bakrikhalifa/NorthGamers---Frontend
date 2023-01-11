@@ -156,19 +156,49 @@ a {
   list-style: none;
 }
 
-.votingSection{
+.votingSection {
   align-items: center;
   margin-top: 1rem;
- }
+}
 
- .viewCommentsButton{
+.viewCommentsButton {
   text-align: center;
- }
+}
 
- .thumbsUp{
-  margin-right: 0.5rem
- }
+.thumbsUp {
+  margin-right: 0.5rem;
+}
 
- .thumbsDown{
-  margin-left: 0.5rem
- }
+.thumbsDown {
+  margin-left: 0.5rem;
+}
+
+.commentUpButton {
+  margin-right: 0.5rem;
+}
+
+.commentDownButton {
+  margin-left: 0.5rem;
+}
+
+.CommentAdder {
+  margin-top: 1rem;
+  height: 100px;
+  width: 400px;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.commentLabel {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.commentButton {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
