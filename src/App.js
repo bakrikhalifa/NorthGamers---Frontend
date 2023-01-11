@@ -7,6 +7,8 @@ import { Routes, Route } from "react-router-dom";
 import Reviews from "./components/Reviews";
 import IndividualReview from "./components/IndividualReview";
 import ReviewComments from "./components/ReviewComments";
+import Categories from "./components/Categories";
+import IndividualCategory from "./components/IndividualCategory";
 
 function App() {
   const LoggedInUser = "weegembump";
@@ -27,7 +29,8 @@ function App() {
           element={<ReviewComments LoggedInUser={LoggedInUser} />}
         />
         <Route path="/users" />
-        <Route path="/categories" />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/:slug" element={<IndividualCategory />} />
       </Routes>
     </div>
   );

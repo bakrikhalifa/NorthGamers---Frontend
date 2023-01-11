@@ -12,9 +12,14 @@ const ReviewCard = ({ reviews }) => {
               alt="Avatar"
             ></img>
           </Link>
-          <h2>{review.title}</h2>
-          <p>Designer: {review.designer}</p>
-          <p>Owner: {review.owner}</p>
+          <h3>{review.title}</h3>
+          <p>
+            <strong>Designer: </strong>
+            {review.designer}
+          </p>
+          <p>
+            <strong>Owner: </strong> {review.owner}
+          </p>
         </li>
       ))}
     </ul>

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/API";
@@ -18,7 +17,12 @@ const Reviews = () => {
     return <p>Loading...</p>;
   }
 
-  return <ReviewCard reviews={reviews} />;
+  return (
+    <div>
+      <h2>Reviews</h2>
+      <ReviewCard reviews={reviews} />;
+    </div>
+  );
 };
 
 export default Reviews;
