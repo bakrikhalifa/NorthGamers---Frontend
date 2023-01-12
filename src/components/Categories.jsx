@@ -12,6 +12,10 @@ const Categories = () => {
     });
   }, []);
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <h2>Categories</h2>

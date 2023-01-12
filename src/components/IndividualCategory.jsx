@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getCategories, getReviews } from "../utils/API";
+import ThumbsCategory from "./ThumbsCategory";
 
 const IndividualCategory = () => {
   const { slug } = useParams();
   const [singleCategory, setSingleCategory] = useState({});
   const [categoryReviews, SetCategoryReviews] = useState([]);
+  console.log(categoryReviews);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getCategories().then((response) => {
@@ -15,23 +17,21 @@ const IndividualCategory = () => {
       setSingleCategory(filteredCategory[0]);
       setLoading(false);
     });
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
     getReviews().then((response) => {
-      const filteredReview = response.reviews.filter(
+      const filteredReviews = response.reviews.filter(
         (review) => review.category === slug
       );
-      SetCategoryReviews(filteredReview);
+      SetCategoryReviews(filteredReviews);
       setLoading(false);
     });
-  }, []);
+  }, [slug]);
 
   if (loading) {
     return <p>Loading...</p>;
   }
-
-  console.log(categoryReviews);
 
   return (
     <div>
@@ -66,6 +66,26 @@ const IndividualCategory = () => {
                 <strong>Review: </strong>
                 {review.review_body}
               </p>
+              <footer className="votingSection">
+                <Link to={`/reviews/${review.review_id}/comments`}>
+                  <button className="viewCommentsButton">
+                    View All Comments
+                  </button>
+                </Link>
+                <div className="votingSection">
+                  <ThumbsCategory
+                    SetCategoryReviews={SetCategoryReviews}
+                    review_id={review.review_id}
+                    isThumbsUp={true}
+                  />
+                  <strong className="votes">Votes: {review.votes}</strong>
+                  <ThumbsCategory
+                    SetCategoryReviews={SetCategoryReviews}
+                    review_id={review.review_id}
+                    isThumbsUp={false}
+                  />
+                </div>
+              </footer>
             </li>
           );
         })}
