@@ -12,9 +12,9 @@ export const getReviews = () => {
 
 export const getReviewsById = (review_id) => {
   return gamersAPI.get(`reviews/${review_id}`).then((res) => {
-    return res
-  })
-}
+    return res;
+  });
+};
 
 export const patchVotes = (reviewId, increment) => {
   const voteChange = { inc_votes: increment ? 1 : -1 };
@@ -44,7 +44,13 @@ export const getCategories = () => {
 };
 
 export const getReviewQuery = (sortBy, order) => {
-  return gamersAPI.get(`/reviews?sort_by=${sortBy}&order=${order}`).then(({data}) => {
-    return data.reviews
-  })
-}
+  return gamersAPI
+    .get(`/reviews?sort_by=${sortBy}&order=${order}`)
+    .then(({ data }) => {
+      return data.reviews;
+    });
+};
+
+export const deleteComment = (commentId) => {
+  return gamersAPI.delete(`comments/${commentId}`);
+};

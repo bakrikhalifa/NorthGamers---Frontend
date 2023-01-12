@@ -36,7 +36,6 @@ const SortBy = ({ setReviews, sortBy, setSortBy, order }) => {
             <option value="comment_count">Comment Count</option>
             <option value="votes">Votes</option>
           </select>
-          <button type="submit">Sort</button>
         </label>
       </form>
     </div>
