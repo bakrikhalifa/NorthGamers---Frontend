@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ReviewCard = ({ reviews }) => {
   return (
-    <ul>
+    <ul className="container">
       {reviews.map((review) => (
         <li key={review.review_id} className="reviewCard" >
           <Link to={`/reviews/${review.review_id}`}>

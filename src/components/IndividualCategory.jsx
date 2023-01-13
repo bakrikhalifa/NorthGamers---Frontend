@@ -6,9 +6,23 @@ import ThumbsCategory from "./ThumbsCategory";
 const IndividualCategory = () => {
   const { slug } = useParams();
   const [categoryReviews, setCategoryReviews] = useState([]);
+  const [singleCategory, setSingleCategory] = useState({});
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getCategories().then((response) => {
+      const filteredCategory = response.filter(
+        (category) => category.slug === slug
+      );
+      if (filteredCategory.length === 0) {
+        setNotFound(true);
+      }
+      setSingleCategory(filteredCategory[0]);
+      setLoading(false);
+    });
+  }, [slug]);
 
 
   useEffect(() => {
@@ -39,10 +53,10 @@ const IndividualCategory = () => {
   return (
     <div>
       <h2>{slug}</h2>
-      <ul>
+      <ul className="indCategoryComments">
         {categoryReviews.map((review) => {
           return (
-            <li key={review.review_id} className="reviewCard">
+            <li key={review.review_id} className="indCategoryComment">
               <img
                 src={review.review_img_url}
                 alt={review.title}
@@ -71,19 +85,19 @@ const IndividualCategory = () => {
               </p>
               <footer className="votingSection">
                 <Link to={`/reviews/${review.review_id}/comments`}>
-                  <button className="viewCommentsButton">
+                  <button className="view-comments-link">
                     View All Comments
                   </button>
                 </Link>
                 <div className="votingSection">
                   <ThumbsCategory
-                    SetCategoryReviews={setCategoryReviews}
+                    setCategoryReviews={setCategoryReviews}
                     review_id={review.review_id}
                     isThumbsUp={true}
                   />
                   <strong className="votes">Votes: {review.votes}</strong>
                   <ThumbsCategory
-                    SetCategoryReviews={setCategoryReviews}
+                    setCategoryReviews={setCategoryReviews}
                     review_id={review.review_id}
                     isThumbsUp={false}
                   />

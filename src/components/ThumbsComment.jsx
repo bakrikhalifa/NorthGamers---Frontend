@@ -1,34 +1,39 @@
 import { useState } from "react";
-import { patchVotes } from "../utils/API";
+import { patchVotesComment } from "../utils/API";
 
-const ThumbsComment = ({ setComments, review_id, isThumbsUp }) => {
+const ThumbsComment = ({ setComments, commentID, isThumbsUp }) => {
   const [commentVotes, setCommentVotes] = useState([]);
 
   const handleVoting = () => {
-    if (commentVotes.includes(review_id)) {
-      alert("You cannot vote on this review again!");
+    if (commentVotes.includes(commentID)) {
+      alert("You cannot vote on this comment again!");
       return;
     }
-    setCommentVotes((currVotes) => {
-      return [...currVotes, review_id];
-    });
-    setComments((currReviews) => {
-      return currReviews.map((comment) => {
-        return { ...comment, votes: comment.votes + (isThumbsUp ? 1 : -1) };
+    setCommentVotes([...commentVotes, commentID])
+    setComments((currComments) => {
+      return currComments.map((comment) => {
+        if (comment.comment_id === commentID) {
+          return { ...comment, votes: comment.votes + (isThumbsUp ? 1 : -1) };
+        }
+        return comment;
       });
     });
 
-    patchVotes(review_id, isThumbsUp)
-      .then((updatedReview) => {})
+    patchVotesComment(commentID, isThumbsUp)
+      .then((updatedComment) => {})
       .catch((err) => {
         setComments((currComments) => {
           alert("Request to server failed, try again!");
           currComments.map((comment) => {
-            return { ...comment, votes: comment.votes - (isThumbsUp ? 1 : -1) };
+            if (comment.comment_id === commentID) {
+              return { ...comment, votes: comment.votes - (isThumbsUp ? 1 : -1) };
+            }
+            return comment;
           });
         });
       });
   };
+
 
   return (
     <button

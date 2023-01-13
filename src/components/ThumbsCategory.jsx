@@ -2,6 +2,7 @@ import { useState } from "react";
 import { patchVotes } from "../utils/API";
 
 const ThumbsCategory = ({ setCategoryReviews, review_id, isThumbsUp }) => {
+  console.log(setCategoryReviews);
   const [userVotes, setUserVotes] = useState([]);
 
   const handleVoting = () => {
@@ -13,7 +14,8 @@ const ThumbsCategory = ({ setCategoryReviews, review_id, isThumbsUp }) => {
       return [...currVotes, review_id];
     });
     setCategoryReviews((currReviews) => {
-        console.log(currReviews);
+      console.log(currReviews);
+
        return currReviews.map(review => {
             return { ...review, votes: review.votes + (isThumbsUp ? 1 : -1) };
         })

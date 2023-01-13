@@ -45,8 +45,8 @@ const ReviewComments = ({ LoggedInUser: username }) => {
         {comments.map((comment) => (
           <li key={comment.comment_id} className="ReviewComment">
             <h3>{comment.author}</h3>
-            <p>Date added: {comment.created_at}</p>
-            <p>Comment: {comment.body}</p>
+            <p><strong>Date added: </strong>{comment.created_at}</p>
+            <p><strong>Comment: </strong>{comment.body}</p>
             {username === comment.author && (
               <DeleteComment
                 comment_id={comment.comment_id}
@@ -57,14 +57,16 @@ const ReviewComments = ({ LoggedInUser: username }) => {
             <div className="reviewVotes-container">
               <ThumbsComment
                 setComments={setComments}
-                review_id={comment.review_id}
+                commentID={comment.comment_id}
                 isThumbsUp={true}
+                className="thumbsUp"
               />
               <strong>Votes: {comment.votes}</strong>
               <ThumbsComment
                 setComments={setComments}
-                review_id={comment.review_id}
+                commentID={comment.comment_id}
                 isThumbsUp={false}
+                className="thumbsDown"
               />
             </div>
           </li>

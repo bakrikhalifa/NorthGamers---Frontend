@@ -21,6 +21,7 @@ export const patchVotes = (reviewId, increment) => {
   return gamersAPI.patch(`/reviews/${reviewId}`, voteChange);
 };
 
+
 export const getCommentsByID = (reviewId) => {
   return gamersAPI.get(`/reviews/${reviewId}/comments`).then((response) => {
     return response.data.comments;
@@ -61,7 +62,7 @@ export const getUsers = () => {
   });
 };
 
-export const patchVotesComment = (reviewId, increment) => {
+export const patchVotesComment = (commentId, increment) => {
   const voteChange = { inc_votes: increment ? 1 : -1 };
-  return gamersAPI.patch(`/api/reviews/${reviewId}}/comments`, voteChange);
+  return gamersAPI.patch(`/comments/${commentId}`, voteChange);
 };

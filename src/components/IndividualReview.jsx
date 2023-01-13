@@ -35,7 +35,7 @@ const IndividualReview = ({ setCommentCount }) => {
   }
 
   return (
-    <section>
+    <section className="reviewIDCard">
       <figure>
         <img
           src={singleReview.review_img_url}
@@ -82,6 +82,7 @@ const IndividualReview = ({ setCommentCount }) => {
             review_id={review_id}
             isThumbsUp={true}
             isCategory={false}
+            className="thumbsUp"
           />
           <strong className="votes">Votes: {singleReview.votes}</strong>
           <ThumbsReview
@@ -89,6 +90,7 @@ const IndividualReview = ({ setCommentCount }) => {
             review_id={review_id}
             isThumbsUp={false}
             isCategory={false}
+            className="thumbsDown"
           />
         </div>
       </footer>
