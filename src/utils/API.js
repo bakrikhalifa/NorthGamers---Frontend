@@ -54,3 +54,14 @@ export const getReviewQuery = (sortBy, order) => {
 export const deleteComment = (commentId) => {
   return gamersAPI.delete(`comments/${commentId}`);
 };
+
+export const getUsers = () => {
+  return gamersAPI.get(`/users`).then((res) => {
+    return res.data;
+  });
+};
+
+export const patchVotesComment = (reviewId, increment) => {
+  const voteChange = { inc_votes: increment ? 1 : -1 };
+  return gamersAPI.patch(`/api/reviews/${reviewId}}/comments`, voteChange);
+};

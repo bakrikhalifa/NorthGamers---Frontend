@@ -12,7 +12,6 @@ const Reviews = () => {
 
   useEffect(() => {
     getReviews().then((response) => {
-      console.log(response.reviews);
       setReviews(response.reviews);
       setIsLoading(false);
     });

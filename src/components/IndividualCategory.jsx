@@ -1,33 +1,36 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getCategories, getReviews } from "../utils/API";
 import ThumbsCategory from "./ThumbsCategory";
 
 const IndividualCategory = () => {
   const { slug } = useParams();
-  const [singleCategory, setSingleCategory] = useState({});
-  const [categoryReviews, SetCategoryReviews] = useState([]);
-  console.log(categoryReviews);
+  const [categoryReviews, setCategoryReviews] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    getCategories().then((response) => {
-      const filteredCategory = response.filter(
-        (category) => category.slug === slug
-      );
-      setSingleCategory(filteredCategory[0]);
-      setLoading(false);
-    });
-  }, [slug]);
+  const [notFound, setNotFound] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     getReviews().then((response) => {
       const filteredReviews = response.reviews.filter(
         (review) => review.category === slug
       );
-      SetCategoryReviews(filteredReviews);
+      setCategoryReviews(filteredReviews);
       setLoading(false);
     });
   }, [slug]);
+
+  if (notFound) {
+    return (
+      <div>
+        <h2>Error 404: Category Not Found</h2>
+        <button onClick={() => navigate("/categories")}>
+          Go to categories
+        </button>
+      </div>
+    );
+  }
 
   if (loading) {
     return <p>Loading...</p>;
@@ -35,7 +38,7 @@ const IndividualCategory = () => {
 
   return (
     <div>
-      <h2>{singleCategory.slug}</h2>
+      <h2>{slug}</h2>
       <ul>
         {categoryReviews.map((review) => {
           return (
@@ -74,13 +77,13 @@ const IndividualCategory = () => {
                 </Link>
                 <div className="votingSection">
                   <ThumbsCategory
-                    SetCategoryReviews={SetCategoryReviews}
+                    SetCategoryReviews={setCategoryReviews}
                     review_id={review.review_id}
                     isThumbsUp={true}
                   />
                   <strong className="votes">Votes: {review.votes}</strong>
                   <ThumbsCategory
-                    SetCategoryReviews={SetCategoryReviews}
+                    SetCategoryReviews={setCategoryReviews}
                     review_id={review.review_id}
                     isThumbsUp={false}
                   />

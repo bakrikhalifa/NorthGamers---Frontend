@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCategories } from "../utils/API";
-import CategoryCard from "./CategoryCard";
+import Category from "./Category";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -19,7 +19,7 @@ const Categories = () => {
   return (
     <div>
       <h2>Categories</h2>
-      <CategoryCard categories={categories} />
+      <Category categories={categories} />
     </div>
   );
 };
