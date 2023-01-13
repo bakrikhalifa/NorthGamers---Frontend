@@ -11,6 +11,7 @@ import Categories from "./components/Categories";
 import IndividualCategory from "./components/IndividualCategory";
 import { useState } from "react";
 import Error404 from "./components/ErrorHandling";
+import Users from "./components/Users";
 
 function App() {
   const LoggedInUser = "weegembump";
@@ -34,7 +35,7 @@ function App() {
           path="/reviews/:review_id/comments"
           element={<ReviewComments LoggedInUser={LoggedInUser} />}
         />
-        <Route path="/users" />
+        <Route path="/users" element={<Users/>} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:slug" element={<IndividualCategory />} />
         <Route path="*" element={<Error404 />} />

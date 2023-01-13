@@ -54,3 +54,9 @@ export const getReviewQuery = (sortBy, order) => {
 export const deleteComment = (commentId) => {
   return gamersAPI.delete(`comments/${commentId}`);
 };
+
+export const getUsers = () => {
+  return gamersAPI.get(`/users`).then((res) => {
+    return res.data
+  })
+}
