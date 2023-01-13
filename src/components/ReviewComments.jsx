@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AddComment from "./AddComment";
 import { getCommentsByID } from "../utils/API";
 import DeleteComment from "./DeleteComment";
+import ThumbsComment from "./ThumbsComment";
 
 const ReviewComments = ({ LoggedInUser: username }) => {
   const { review_id } = useParams();
@@ -54,9 +55,17 @@ const ReviewComments = ({ LoggedInUser: username }) => {
               />
             )}
             <div className="reviewVotes-container">
-              <button className="commentUpButton">Thumbs Up</button>
+              <ThumbsComment
+                setComments={setComments}
+                review_id={comment.review_id}
+                isThumbsUp={true}
+              />
               <strong>Votes: {comment.votes}</strong>
-              <button className="commentDownButton">Thumbs Down</button>
+              <ThumbsComment
+                setComments={setComments}
+                review_id={comment.review_id}
+                isThumbsUp={false}
+              />
             </div>
           </li>
         ))}

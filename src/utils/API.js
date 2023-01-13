@@ -57,6 +57,11 @@ export const deleteComment = (commentId) => {
 
 export const getUsers = () => {
   return gamersAPI.get(`/users`).then((res) => {
-    return res.data
-  })
-}
+    return res.data;
+  });
+};
+
+export const patchVotesComment = (reviewId, increment) => {
+  const voteChange = { inc_votes: increment ? 1 : -1 };
+  return gamersAPI.patch(`/api/reviews/${reviewId}}/comments`, voteChange);
+};
