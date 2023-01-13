@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { patchVotes } from "../utils/API";
 
-const Thumbs = ({ setSingleReview, review_id, isThumbsUp }) => {
+const ThumbsReview = ({ setSingleReview, review_id, isThumbsUp }) => {
   const [userVotes, setUserVotes] = useState([]);
 
   const handleVoting = () => {
@@ -39,4 +39,4 @@ const Thumbs = ({ setSingleReview, review_id, isThumbsUp }) => {
   );
 };
 
-export default Thumbs;
+export default ThumbsReview;

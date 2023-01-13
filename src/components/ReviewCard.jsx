@@ -12,18 +12,16 @@ const ReviewCard = ({ reviews }) => {
               alt="Avatar"
             ></img>
           </Link>
-          <h3>{review.title}</h3>
-          <p>
-            <strong>Designer: </strong>
-            {review.designer}
-          </p>
-          <p>
-            <strong>Owner: </strong> {review.owner}
-          </p>
+          <h2>{review.title}</h2>
+          <p><strong>Date posted: </strong>{review.created_at}</p>
+          <p><strong>Designer: </strong>{review.designer}</p>
+          <p><strong>Owner: </strong>{review.owner}</p>
+          <p><strong>Comment Count: </strong>{review.comment_count}</p>
+          <p><strong>Votes: </strong>{review.votes}</p>
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
 export default ReviewCard;

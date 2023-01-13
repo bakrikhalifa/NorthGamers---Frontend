@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
-import { getReviews } from "../utils/API";
+import { getReviews, getReviewsById } from "../utils/API";
+import SortBy from "./SortBy";
+import Order from "./Order";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortBy, setSortBy] = useState("all");
+  const [order, setOrder] = useState("desc");
 
   useEffect(() => {
     getReviews().then((response) => {
+      console.log(response.reviews);
       setReviews(response.reviews);
       setIsLoading(false);
     });
@@ -20,7 +25,21 @@ const Reviews = () => {
   return (
     <div>
       <h2>Reviews</h2>
-      <ReviewCard reviews={reviews} />;
+      <SortBy
+        setReviews={setReviews}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        order={order}
+      />
+      {sortBy !== "all" && (
+        <Order
+          sortBy={sortBy}
+          order={order}
+          setOrder={setOrder}
+          setReviews={setReviews}
+        />
+      )}
+      <ReviewCard reviews={reviews} />
     </div>
   );
 };

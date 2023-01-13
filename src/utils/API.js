@@ -10,6 +10,12 @@ export const getReviews = () => {
   });
 };
 
+export const getReviewsById = (review_id) => {
+  return gamersAPI.get(`reviews/${review_id}`).then((res) => {
+    return res
+  })
+}
+
 export const patchVotes = (reviewId, increment) => {
   const voteChange = { inc_votes: increment ? 1 : -1 };
   return gamersAPI.patch(`/reviews/${reviewId}`, voteChange);
@@ -36,3 +42,9 @@ export const getCategories = () => {
     return data;
   });
 };
+
+export const getReviewQuery = (sortBy, order) => {
+  return gamersAPI.get(`/reviews?sort_by=${sortBy}&order=${order}`).then(({data}) => {
+    return data.reviews
+  })
+}
