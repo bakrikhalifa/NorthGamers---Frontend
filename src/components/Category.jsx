@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CategoryCard = ({ categories }) => {
+const Category = ({ categories }) => {
   return (
     <div>
       <ul className="category">
@@ -11,8 +11,8 @@ const CategoryCard = ({ categories }) => {
             <p>
               <strong>Description:</strong> {category.description}
             </p>
-            <Link to={`/categories/${category.slug}`}>
-              <button>View Games</button>
+            <Link to={`/categories/${category.slug}`} className="view-games-link">
+              View Games
             </Link>
           </li>
         ))}
@@ -21,4 +21,4 @@ const CategoryCard = ({ categories }) => {
   );
 };
 
-export default CategoryCard;
+export default Category;

@@ -16,11 +16,9 @@ const DeleteComment = ({ comment_id, comments, setComments }) => {
   };
 
   return (
-    <div>
-      <button onClick={handleClick} disabled={isDeleting}>
-        {isDeleting ? "Deleting..." : "Delete comment"}
-      </button>
-    </div>
+    <button onClick={handleClick} disabled={isDeleting}>
+      {isDeleting ? "Deleting..." : "Delete comment"}
+    </button>
   );
 };
 

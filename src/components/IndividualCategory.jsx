@@ -5,31 +5,18 @@ import ThumbsCategory from "./ThumbsCategory";
 
 const IndividualCategory = () => {
   const { slug } = useParams();
-  const [singleCategory, setSingleCategory] = useState({});
-  const [categoryReviews, SetCategoryReviews] = useState([]);
+  const [categoryReviews, setCategoryReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getCategories().then((response) => {
-      const filteredCategory = response.filter(
-        (category) => category.slug === slug
-      );
-      if (filteredCategory.length === 0) {
-        setNotFound(true);
-      }
-      setSingleCategory(filteredCategory[0]);
-      setLoading(false);
-    });
-  }, [slug]);
 
   useEffect(() => {
     getReviews().then((response) => {
       const filteredReviews = response.reviews.filter(
         (review) => review.category === slug
       );
-      SetCategoryReviews(filteredReviews);
+      setCategoryReviews(filteredReviews);
       setLoading(false);
     });
   }, [slug]);
@@ -51,7 +38,7 @@ const IndividualCategory = () => {
 
   return (
     <div>
-      <h2>{singleCategory.slug}</h2>
+      <h2>{slug}</h2>
       <ul>
         {categoryReviews.map((review) => {
           return (
@@ -90,13 +77,13 @@ const IndividualCategory = () => {
                 </Link>
                 <div className="votingSection">
                   <ThumbsCategory
-                    SetCategoryReviews={SetCategoryReviews}
+                    SetCategoryReviews={setCategoryReviews}
                     review_id={review.review_id}
                     isThumbsUp={true}
                   />
                   <strong className="votes">Votes: {review.votes}</strong>
                   <ThumbsCategory
-                    SetCategoryReviews={SetCategoryReviews}
+                    SetCategoryReviews={setCategoryReviews}
                     review_id={review.review_id}
                     isThumbsUp={false}
                   />

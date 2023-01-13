@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getReviewQuery, getReviews } from "../utils/API";
 
@@ -26,19 +26,17 @@ const SortBy = ({ setReviews, sortBy, setSortBy, order }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Sort by:
-          <select onChange={handleChange}>
-            <option value="all">All</option>
-            <option value="created_at">Date</option>
-            <option value="comment_count">Comment Count</option>
-            <option value="votes">Votes</option>
-          </select>
-        </label>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Sort by:
+        <select onChange={handleChange}>
+          <option value="all">All</option>
+          <option value="created_at">Date</option>
+          <option value="comment_count">Comment Count</option>
+          <option value="votes">Votes</option>
+        </select>
+      </label>
+    </form>
   );
 };
 

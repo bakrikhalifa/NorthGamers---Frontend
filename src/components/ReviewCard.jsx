@@ -4,7 +4,7 @@ const ReviewCard = ({ reviews }) => {
   return (
     <ul>
       {reviews.map((review) => (
-        <li key={review.review_id} className="reviewCard">
+        <li key={review.review_id} className="reviewCard" >
           <Link to={`/reviews/${review.review_id}`}>
             <img
               src={review.review_img_url}

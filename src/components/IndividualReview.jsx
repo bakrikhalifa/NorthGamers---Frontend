@@ -15,12 +15,11 @@ const IndividualReview = ({ setCommentCount }) => {
       .then((res) => {
         setSingleReview(res.data);
         setLoading(false);
-        setCommentCount(res.data.comment_count);
       })
       .catch((err) => {
         setNotFound(true);
       });
-  }, [review_id, setCommentCount]);
+  }, [review_id]);
 
   if (notFound) {
     return (
@@ -74,8 +73,8 @@ const IndividualReview = ({ setCommentCount }) => {
         </p>
       </main>
       <footer className="votingSection">
-        <Link to={`/reviews/${singleReview.review_id}/comments`}>
-          <button className="viewCommentsButton">View All Comments</button>
+        <Link to={`/reviews/${singleReview.review_id}/comments`} className="view-comments-link">
+          View All Comments
         </Link>
         <div className="votingSection">
           <ThumbsReview

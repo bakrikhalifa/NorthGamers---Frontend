@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { patchVotes } from "../utils/API";
 
-const ThumbsCategory = ({ SetCategoryReviews, review_id, isThumbsUp }) => {
+const ThumbsCategory = ({ setCategoryReviews, review_id, isThumbsUp }) => {
   const [userVotes, setUserVotes] = useState([]);
 
   const handleVoting = () => {
@@ -12,7 +12,7 @@ const ThumbsCategory = ({ SetCategoryReviews, review_id, isThumbsUp }) => {
     setUserVotes((currVotes) => {
       return [...currVotes, review_id];
     });
-    SetCategoryReviews((currReviews) => {
+    setCategoryReviews((currReviews) => {
         console.log(currReviews);
        return currReviews.map(review => {
             return { ...review, votes: review.votes + (isThumbsUp ? 1 : -1) };
@@ -23,7 +23,7 @@ const ThumbsCategory = ({ SetCategoryReviews, review_id, isThumbsUp }) => {
     patchVotes(review_id, isThumbsUp)
       .then((updatedReview) => {})
       .catch((err) => {
-        SetCategoryReviews((currReviews) => {
+        setCategoryReviews((currReviews) => {
           alert("Request to server failed, try again!");
           currReviews.map(review => {
             return { ...review, votes: review.votes - (isThumbsUp ? 1 : -1) };
