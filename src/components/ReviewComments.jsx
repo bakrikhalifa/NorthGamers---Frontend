@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AddComment from "./AddComment";
 import { getCommentsByID } from "../utils/API";
+import DeleteComment from "./DeleteComment";
 
 const ReviewComments = ({ LoggedInUser: username }) => {
   const { review_id } = useParams();
@@ -45,6 +46,13 @@ const ReviewComments = ({ LoggedInUser: username }) => {
             <h3>{comment.author}</h3>
             <p>Date added: {comment.created_at}</p>
             <p>Comment: {comment.body}</p>
+            {username === comment.author && (
+              <DeleteComment
+                comment_id={comment.comment_id}
+                comments={comments}
+                setComments={setComments}
+              />
+            )}
             <div className="reviewVotes-container">
               <button className="commentUpButton">Thumbs Up</button>
               <strong>Votes: {comment.votes}</strong>
