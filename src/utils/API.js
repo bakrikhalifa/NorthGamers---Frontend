@@ -30,3 +30,9 @@ export const postComment = (reviewId, username, newComment) => {
       return data;
     });
 };
+
+export const getCategories = () => {
+  return gamersAPI.get(`/categories`).then(({ data }) => {
+    return data;
+  });
+};

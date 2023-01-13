@@ -34,11 +34,26 @@ const IndividualReview = () => {
         <h2>{singleReview.title}</h2>
       </header>
       <main>
-        <p>Review ID: {singleReview.review_id}</p>
-        <p>Category: {singleReview.category}</p>
-        <p>Designer: {singleReview.designer}</p>
-        <p>Owner: {singleReview.owner}</p>
-        <p>Review: {singleReview.review_body}</p>
+        <p>
+          <strong>Review ID: </strong>
+          {singleReview.review_id}
+        </p>
+        <p>
+          <strong>Category: </strong>
+          {singleReview.category}
+        </p>
+        <p>
+          <strong>Designer: </strong>
+          {singleReview.designer}
+        </p>
+        <p>
+          <strong>Owner: </strong>
+          {singleReview.owner}
+        </p>
+        <p>
+          <strong>Review: </strong>
+          {singleReview.review_body}
+        </p>
       </main>
       <footer className="votingSection">
         <Link to={`/reviews/${singleReview.review_id}/comments`}>
