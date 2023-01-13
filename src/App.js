@@ -10,6 +10,7 @@ import ReviewComments from "./components/ReviewComments";
 import Categories from "./components/Categories";
 import IndividualCategory from "./components/IndividualCategory";
 import { useState } from "react";
+import Error404 from "./components/ErrorHandling";
 
 function App() {
   const LoggedInUser = "weegembump";
@@ -27,7 +28,8 @@ function App() {
           element={<WelcomeParagraph LoggedInUser={LoggedInUser} />}
         />
         <Route path="/reviews" element={<Reviews commentsCount={commentCount} />} />
-        <Route path="/reviews/:review_id" element={<IndividualReview setCommentCount={setCommentCount} />} />
+        <Route path="/reviews/:review_id" element={<IndividualReview setCommentCount={setCommentCount} />}/>
+        
         <Route
           path="/reviews/:review_id/comments"
           element={<ReviewComments LoggedInUser={LoggedInUser} />}
@@ -35,6 +37,7 @@ function App() {
         <Route path="/users" />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:slug" element={<IndividualCategory />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

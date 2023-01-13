@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import ThumbsReview from "./ThumbsReview";
 import { getReviewsById } from "../utils/API";
 
@@ -7,14 +7,29 @@ const IndividualReview = ({ setCommentCount }) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getReviewsById(review_id).then((res) => {
-      setSingleReview(res.data);
-      setLoading(false);
-      setCommentCount(res.data.comment_count);
-    });
+    getReviewsById(review_id)
+      .then((res) => {
+        setSingleReview(res.data);
+        setLoading(false);
+        setCommentCount(res.data.comment_count);
+      })
+      .catch((err) => {
+        setNotFound(true);
+      });
   }, [review_id, setCommentCount]);
+
+  if (notFound) {
+    return (
+      <div>
+        <h2>Error 404: Review Not Found</h2>
+        <button onClick={() => navigate("/reviews")}>Go to reviews</button>
+      </div>
+    );
+  }
 
   if (loading) {
     return <p>Loading...</p>;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getCategories, getReviews } from "../utils/API";
 import ThumbsCategory from "./ThumbsCategory";
 
@@ -7,13 +7,18 @@ const IndividualCategory = () => {
   const { slug } = useParams();
   const [singleCategory, setSingleCategory] = useState({});
   const [categoryReviews, SetCategoryReviews] = useState([]);
-  console.log(categoryReviews);
   const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     getCategories().then((response) => {
       const filteredCategory = response.filter(
         (category) => category.slug === slug
       );
+      if (filteredCategory.length === 0) {
+        setNotFound(true);
+      }
       setSingleCategory(filteredCategory[0]);
       setLoading(false);
     });
@@ -28,6 +33,17 @@ const IndividualCategory = () => {
       setLoading(false);
     });
   }, [slug]);
+
+  if (notFound) {
+    return (
+      <div>
+        <h2>Error 404: Category Not Found</h2>
+        <button onClick={() => navigate("/categories")}>
+          Go to categories
+        </button>
+      </div>
+    );
+  }
 
   if (loading) {
     return <p>Loading...</p>;
