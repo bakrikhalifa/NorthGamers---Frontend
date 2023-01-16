@@ -73,7 +73,10 @@ const IndividualReview = ({ setCommentCount }) => {
         </p>
       </main>
       <footer className="votingSection">
-        <Link to={`/reviews/${singleReview.review_id}/comments`} className="view-comments-link">
+        <Link
+          to={`/reviews/${singleReview.review_id}/comments`}
+          className="view-comments-link"
+        >
           View All Comments
         </Link>
         <div className="votingSection">

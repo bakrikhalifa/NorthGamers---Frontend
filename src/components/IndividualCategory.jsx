@@ -1,35 +1,23 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getCategories, getReviews } from "../utils/API";
+import { getReviews } from "../utils/API";
 import ThumbsCategory from "./ThumbsCategory";
 
 const IndividualCategory = () => {
   const { slug } = useParams();
   const [categoryReviews, setCategoryReviews] = useState([]);
-  const [singleCategory, setSingleCategory] = useState({});
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getCategories().then((response) => {
-      const filteredCategory = response.filter(
-        (category) => category.slug === slug
-      );
-      if (filteredCategory.length === 0) {
-        setNotFound(true);
-      }
-      setSingleCategory(filteredCategory[0]);
-      setLoading(false);
-    });
-  }, [slug]);
-
 
   useEffect(() => {
     getReviews().then((response) => {
       const filteredReviews = response.reviews.filter(
         (review) => review.category === slug
       );
+      if(filteredReviews.length === 0) {
+        setNotFound(true)
+      }
       setCategoryReviews(filteredReviews);
       setLoading(false);
     });

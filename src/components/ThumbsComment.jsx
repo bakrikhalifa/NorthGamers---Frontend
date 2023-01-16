@@ -9,7 +9,7 @@ const ThumbsComment = ({ setComments, commentID, isThumbsUp }) => {
       alert("You cannot vote on this comment again!");
       return;
     }
-    setCommentVotes([...commentVotes, commentID])
+    setCommentVotes([...commentVotes, commentID]);
     setComments((currComments) => {
       return currComments.map((comment) => {
         if (comment.comment_id === commentID) {
@@ -26,14 +26,16 @@ const ThumbsComment = ({ setComments, commentID, isThumbsUp }) => {
           alert("Request to server failed, try again!");
           currComments.map((comment) => {
             if (comment.comment_id === commentID) {
-              return { ...comment, votes: comment.votes - (isThumbsUp ? 1 : -1) };
+              return {
+                ...comment,
+                votes: comment.votes - (isThumbsUp ? 1 : -1),
+              };
             }
             return comment;
           });
         });
       });
   };
-
 
   return (
     <button

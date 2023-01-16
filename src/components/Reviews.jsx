@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
-import { getReviews, getReviewsById } from "../utils/API";
+import { getReviews } from "../utils/API";
 import SortBy from "./SortBy";
 import Order from "./Order";
 

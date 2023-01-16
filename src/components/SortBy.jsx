@@ -1,5 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getReviewQuery, getReviews } from "../utils/API";
 
 const SortBy = ({ setReviews, sortBy, setSortBy, order }) => {

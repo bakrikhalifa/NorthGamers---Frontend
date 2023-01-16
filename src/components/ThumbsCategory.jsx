@@ -16,10 +16,9 @@ const ThumbsCategory = ({ setCategoryReviews, review_id, isThumbsUp }) => {
     setCategoryReviews((currReviews) => {
       console.log(currReviews);
 
-       return currReviews.map(review => {
-            return { ...review, votes: review.votes + (isThumbsUp ? 1 : -1) };
-        })
-     
+      return currReviews.map((review) => {
+        return { ...review, votes: review.votes + (isThumbsUp ? 1 : -1) };
+      });
     });
 
     patchVotes(review_id, isThumbsUp)
@@ -27,9 +26,9 @@ const ThumbsCategory = ({ setCategoryReviews, review_id, isThumbsUp }) => {
       .catch((err) => {
         setCategoryReviews((currReviews) => {
           alert("Request to server failed, try again!");
-          currReviews.map(review => {
+          currReviews.map((review) => {
             return { ...review, votes: review.votes - (isThumbsUp ? 1 : -1) };
-        })
+          });
         });
       });
   };

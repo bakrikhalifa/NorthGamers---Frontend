@@ -4,7 +4,7 @@ const ReviewCard = ({ reviews }) => {
   return (
     <ul className="container">
       {reviews.map((review) => (
-        <li key={review.review_id} className="reviewCard" >
+        <li key={review.review_id} className="reviewCard">
           <Link to={`/reviews/${review.review_id}`}>
             <img
               src={review.review_img_url}
@@ -13,15 +13,30 @@ const ReviewCard = ({ reviews }) => {
             ></img>
           </Link>
           <h2>{review.title}</h2>
-          <p><strong>Date posted: </strong>{review.created_at}</p>
-          <p><strong>Designer: </strong>{review.designer}</p>
-          <p><strong>Owner: </strong>{review.owner}</p>
-          <p><strong>Comment Count: </strong>{review.comment_count}</p>
-          <p><strong>Votes: </strong>{review.votes}</p>
+          <p>
+            <strong>Date posted: </strong>
+            {review.created_at}
+          </p>
+          <p>
+            <strong>Designer: </strong>
+            {review.designer}
+          </p>
+          <p>
+            <strong>Owner: </strong>
+            {review.owner}
+          </p>
+          <p>
+            <strong>Comment Count: </strong>
+            {review.comment_count}
+          </p>
+          <p>
+            <strong>Votes: </strong>
+            {review.votes}
+          </p>
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
 export default ReviewCard;

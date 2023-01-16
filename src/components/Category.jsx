@@ -11,7 +11,10 @@ const Category = ({ categories }) => {
             <p>
               <strong>Description:</strong> {category.description}
             </p>
-            <Link to={`/categories/${category.slug}`} className="view-games-link">
+            <Link
+              to={`/categories/${category.slug}`}
+              className="view-games-link"
+            >
               View Games
             </Link>
           </li>

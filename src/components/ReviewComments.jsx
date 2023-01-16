@@ -45,8 +45,14 @@ const ReviewComments = ({ LoggedInUser: username }) => {
         {comments.map((comment) => (
           <li key={comment.comment_id} className="ReviewComment">
             <h3>{comment.author}</h3>
-            <p><strong>Date added: </strong>{comment.created_at}</p>
-            <p><strong>Comment: </strong>{comment.body}</p>
+            <p>
+              <strong>Date added: </strong>
+              {comment.created_at}
+            </p>
+            <p>
+              <strong>Comment: </strong>
+              {comment.body}
+            </p>
             {username === comment.author && (
               <DeleteComment
                 comment_id={comment.comment_id}

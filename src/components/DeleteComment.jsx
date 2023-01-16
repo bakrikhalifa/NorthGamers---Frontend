@@ -16,7 +16,11 @@ const DeleteComment = ({ comment_id, comments, setComments }) => {
   };
 
   return (
-    <button onClick={handleClick} disabled={isDeleting} className="deleteButton">
+    <button
+      onClick={handleClick}
+      disabled={isDeleting}
+      className="deleteButton"
+    >
       {isDeleting ? "Deleting..." : "Delete comment"}
     </button>
   );
