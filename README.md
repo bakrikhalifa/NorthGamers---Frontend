@@ -20,48 +20,23 @@ The back-end repository for this project can be found here: https://github.com/b
 
 ---
 
-## Initial Setup
-
-Minimum versions of Node.js and Postgres needed to run this project,
-
-```bash
-Node: v19.0.0
-Postgres: v12.12
-```
-
-1. Clone the repository to your local machine. To do this, open up your terminal and run this command:
-
-```bash
-git clone https://github.com/bakrikhalifa/BK-portfolio-project-nc_games.git
-```
-
-2. Now that you have cloned the repo, open it in your preferred code editor.
-
-3. Next, install the dependencies required to run this project. To do this, run this command:
-
-```bash
-npm install
-```
-
----
-
 ## Running the project locally
 
 To run this project locally, you will need to have at least Node.js version 16.17.0 installed on your machine.
 
-1. Clone the repository
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/bakrikhalifa/NorthGamers---Frontend.git
 ```
 
-2. Install the dependencies
+2. Install the dependencies:
 
 ```bash
 npm install
 ```
 
-3. Run the app
+3. Run the app:
 
 ```bash
 npm start
